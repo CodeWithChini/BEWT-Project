@@ -61,13 +61,18 @@ const MeetingForm = ({ meeting, onSubmit, onCancel }) => {
   };
 
   return (
-    <div className="meeting-form card">
-      <h2>{meeting ? 'Edit Meeting' : 'Schedule New Meeting'}</h2>
+    <div className="meeting-form card fade-in">
+      <h2>
+        <i className="fas fa-calendar-plus"></i>
+        {meeting ? ' Edit Meeting' : ' Schedule New Meeting'}
+      </h2>
 
       <form onSubmit={handleSubmit}>
         <div className="grid grid-2">
           <div className="form-group">
-            <label>Meeting Title *</label>
+            <label>
+              <i className="fas fa-heading"></i> Meeting Title *
+            </label>
             <input
               type="text"
               name="title"
@@ -79,7 +84,9 @@ const MeetingForm = ({ meeting, onSubmit, onCancel }) => {
           </div>
 
           <div className="form-group">
-            <label>Meeting Type *</label>
+            <label>
+              <i className="fas fa-tag"></i> Meeting Type *
+            </label>
             <select
               name="type"
               value={formData.type}
@@ -97,7 +104,9 @@ const MeetingForm = ({ meeting, onSubmit, onCancel }) => {
 
         <div className="grid grid-2">
           <div className="form-group">
-            <label>Date *</label>
+            <label>
+              <i className="fas fa-calendar-day"></i> Date *
+            </label>
             <input
               type="date"
               name="date"
@@ -108,7 +117,9 @@ const MeetingForm = ({ meeting, onSubmit, onCancel }) => {
           </div>
 
           <div className="form-group">
-            <label>Time *</label>
+            <label>
+              <i className="fas fa-clock"></i> Time *
+            </label>
             <input
               type="time"
               name="time"
@@ -121,7 +132,9 @@ const MeetingForm = ({ meeting, onSubmit, onCancel }) => {
 
         <div className="grid grid-2">
           <div className="form-group">
-            <label>Duration (minutes)</label>
+            <label>
+              <i className="fas fa-hourglass-half"></i> Duration
+            </label>
             <select
               name="duration"
               value={formData.duration}
@@ -136,7 +149,9 @@ const MeetingForm = ({ meeting, onSubmit, onCancel }) => {
           </div>
 
           <div className="form-group">
-            <label>Venue *</label>
+            <label>
+              <i className="fas fa-map-marker-alt"></i> Venue *
+            </label>
             <input
               type="text"
               name="venue"
@@ -149,7 +164,9 @@ const MeetingForm = ({ meeting, onSubmit, onCancel }) => {
         </div>
 
         <div className="form-group">
-          <label>Organizer</label>
+          <label>
+            <i className="fas fa-user-tie"></i> Organizer
+          </label>
           <input
             type="text"
             name="organizer"
@@ -160,18 +177,22 @@ const MeetingForm = ({ meeting, onSubmit, onCancel }) => {
         </div>
 
         <div className="form-group">
-          <label>Description</label>
+          <label>
+            <i className="fas fa-file-alt"></i> Description
+          </label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
-            placeholder="Enter meeting description"
+            placeholder="Enter meeting description, agenda, or objectives"
             rows="4"
           />
         </div>
 
         <div className="form-group">
-          <label>Add Participants</label>
+          <label>
+            <i className="fas fa-users"></i> Add Participants
+          </label>
           <div className="participant-input">
             <input
               type="email"
@@ -184,23 +205,26 @@ const MeetingForm = ({ meeting, onSubmit, onCancel }) => {
               className="btn btn-secondary"
               onClick={handleAddParticipant}
             >
-              Add
+              <i className="fas fa-plus"></i> Add
             </button>
           </div>
 
           {formData.participants.length > 0 && (
             <div className="participant-list">
-              <h4>Participants ({formData.participants.length})</h4>
+              <h4>
+                <i className="fas fa-user-friends"></i>
+                Participants ({formData.participants.length})
+              </h4>
               <div className="participant-tags">
                 {formData.participants.map((email, index) => (
                   <div key={index} className="participant-tag">
-                    {email}
+                    <i className="fas fa-user-circle"></i> {email}
                     <button
                       type="button"
                       className="remove-btn"
                       onClick={() => handleRemoveParticipant(email)}
                     >
-                      ×
+                      <i className="fas fa-times"></i>
                     </button>
                   </div>
                 ))}
@@ -211,10 +235,11 @@ const MeetingForm = ({ meeting, onSubmit, onCancel }) => {
 
         <div className="form-actions">
           <button type="button" className="btn btn-secondary" onClick={onCancel}>
-            Cancel
+            <i className="fas fa-times"></i> Cancel
           </button>
           <button type="submit" className="btn btn-primary">
-            {meeting ? 'Update Meeting' : 'Schedule Meeting'}
+            <i className="fas fa-check"></i>
+            {meeting ? ' Update Meeting' : ' Schedule Meeting'}
           </button>
         </div>
       </form>
